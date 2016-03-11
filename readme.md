@@ -6,7 +6,7 @@ API untuk kode ini dapat dilihat pada [http://yusufsyaifudin.github.io/indonesia
 
 ## Instalasi
 
-Untuk menginstall, tambahkan kode berikut pada berkas `pom.xml`:
+Untuk menginstall pastikan versi java Anda ialah 1.8 keatas, tambahkan kode berikut pada berkas `pom.xml`:
 
 ```
 <repositories>
