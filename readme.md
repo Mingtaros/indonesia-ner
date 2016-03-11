@@ -1,6 +1,6 @@
 # Named Entity Recoginition for Bahasa Indonesia
 
-API untuk kode ini dapat dilihat pada [http://yusufsyaifudin.github.io/indonesia-ner/api](http://yusufsyaifudin.github.io/indonesia-ner/api).
+API untuk kode ini dapat dilihat pada [http://yusufsyaifudin.github.io/indonesia-ner/doc/api](http://yusufsyaifudin.github.io/indonesia-ner/api).
 
 ## Instalasi
 
@@ -192,7 +192,7 @@ You must add this to your citation or bibliography:
        school       = {Universitas Gadjah Mada},
        note         = {Undergraduate Thesis}
        year         = "2014" }
-
+```
 
 # LICENSE
 The MIT License (MIT)
