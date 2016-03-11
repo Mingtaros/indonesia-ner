@@ -1,6 +1,6 @@
 # Named Entity Recoginition for Bahasa Indonesia
 
-API untuk kode ini dapat dilihat pada [http://yusufsyaifudin.github.io/indonesia-ner/doc/api](http://yusufsyaifudin.github.io/indonesia-ner/api).
+API untuk kode ini dapat dilihat pada [http://yusufsyaifudin.github.io/indonesia-ner/doc/api](http://yusufsyaifudin.github.io/indonesia-ner/doc/api).
 
 ## Instalasi
 
