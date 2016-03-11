@@ -1,5 +1,7 @@
 # Named Entity Recoginition for Bahasa Indonesia
 
+[![Build Status](https://travis-ci.org/yusufsyaifudin/indonesia-ner.svg?branch=master)](https://travis-ci.org/yusufsyaifudin/indonesia-ner)
+
 API untuk kode ini dapat dilihat pada [http://yusufsyaifudin.github.io/indonesia-ner/doc/api](http://yusufsyaifudin.github.io/indonesia-ner/doc/api).
 
 ## Instalasi
@@ -29,7 +31,7 @@ dan kode berikut pada _dependency_ `pom.xml`
 </dependencies>
 ```
 
-Kemudian, pastikan Anda telah menyalin dan menaruh folder `resources` ke dalam *root directory* project Anda, sehingga akan terbentuk struktur sebagai berikut:
+Kemudian, pastikan Anda telah menyalin dan menaruh folder `resources` (unduh di sini [https://github.com/yusufsyaifudin/indonesia-ner/releases/download/1.0.0/resources.zip](https://github.com/yusufsyaifudin/indonesia-ner/releases/download/1.0.0/resources.zip)) ke dalam *root directory* project Anda, sehingga akan terbentuk struktur sebagai berikut:
 
 ```
 - your-project
@@ -41,7 +43,7 @@ Kemudian, pastikan Anda telah menyalin dan menaruh folder `resources` ke dalam *
 ```
 
 
-# Melakukan prediksi
+## Melakukan prediksi
 Anda bisa juga langsung melakukan prediksi dengan menggunakan model yang telah saya buat, yaitu:
 
 ```
@@ -104,8 +106,8 @@ for(ArrayList<Words> arrWords : predicted) {
 ```
 
 
-# Membuat Model dan Prediksi dari model buatan sendiri
-## Membuat model dari data latih
+## Membuat Model dan Prediksi dari model buatan sendiri
+### Membuat model dari data latih
 
 ```
 Train train = new Train();
@@ -121,7 +123,7 @@ try {
  
 ```
 
-## Melakukan prediksi dari model yang dibuat
+### Melakukan prediksi dari model yang dibuat
 ```
 Prediction pred = new Prediction();
 
@@ -129,7 +131,7 @@ ArrayList<Sentence> sentence = pred.predict(String data, Boolean withPunctuation
 
 ```
 
-# Melakukan Perhitungan Probabilitas
+## Melakukan Perhitungan Probabilitas
 Anda mungkin hanya butuh melakukan perhitungan probabilitas, Anda dapat melakukannya dengan menggunakan kelas `Counter` yang dimasukkan sebuah `ArrayList<Sentence>` caranya ialah sebagai berikut:
 
 
@@ -175,7 +177,7 @@ HashMap<String, HashMap<String, Double>> nextLexicalClass = counter.probabilityO
 ```
 
 
-# Citation
+## Citation
 You must add this to your citation or bibliography:
 
 ```
@@ -194,7 +196,7 @@ You must add this to your citation or bibliography:
        year         = "2014" }
 ```
 
-# LICENSE
+## LICENSE
 The MIT License (MIT)
 Copyright (c) <2016> <Yusuf yusufs.syaifudin@gmail.com>
 
