@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>NER Bahasa Indonesia</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>NER for Bahasa Indonesia</h1>
+        
+
+        
+      </div>
+
+      
+        
+        <p>API untuk kode ini dapat dilihat pada <a href="http://yusufsyaifudin.github.io/indonesia-ner/doc/api">http://yusufsyaifudin.github.io/indonesia-ner/doc/api</a> atau untuk melihat kodenya silahkan ke repositori github berikut <a href="https://github.com/yusufsyaifudin/indonesia-ner">https://github.com/yusufsyaifudin/indonesia-ner</a></p>
+
+
+<h2>Instalasi</h2>
+
+<p>Tambahkan kode berikut untuk mendefinisikan lokasi repositori pada <code>pom.xml</code></p>
+<div class='highlight'>
+<pre>
+&lt;repositories&gt;
+    &lt;repository&gt;
+      &lt;id&gt;yusufs.nlp&lt;/id&gt;
+      &lt;name&gt;indonesia-ner&lt;/name&gt;
+      &lt;url&gt;https://github.com/yusufsyaifudin/indonesia-ner/raw/1.0.0/&lt;/url&gt;
+    &lt;/repository&gt;
+&lt;/repositories&gt; 
+</pre>
+</div>
+
+
+dan tambahkan kode berikut pada dependensinya
+
+<div class="highlight">
+<pre>
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;yusufs.nlp&lt;/groupId&gt;
+      &lt;artifactId&gt;indonesia-ner&lt;/artifactId&gt;
+      &lt;version&gt;1.0.0&lt;/version&gt;
+      &lt;scope&gt;compile&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</pre>
+</div>
+        
+<p>
+  Kemudian, pastikan Anda telah menyalin dan menaruh folder resources (unduh di sini <a href="https://github.com/yusufsyaifudin/indonesia-ner/releases/download/1.0.0/resources.zip">https://github.com/yusufsyaifudin/indonesia-ner/releases/download/1.0.0/resources.zip</a>) ke dalam root directory project Anda, sehingga akan terbentuk struktur sebagai berikut:
+</p>
+
+<div class="highlight">
+<pre>
+- your-project
+  - resources <-- tempat Anda menaruh file resource yang ada dalam repositori ini
+  - src
+    - main
+      - java
+  - target
+</pre>
+</div>
+
+<p>
+  Selesai! Silahkan baca readme.md pada link berikut <a href="https://github.com/yusufsyaifudin/indonesia-ner/blob/master/readme.md">https://github.com/yusufsyaifudin/indonesia-ner/blob/master/readme.md</a> atau dokumentasi API pada link berikut <a href="https://github.com/yusufsyaifudin/indonesia-ner">https://github.com/yusufsyaifudin/indonesia-ner</a> untuk penggunaan lebih jauh.
+</p>  
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
