@@ -6,14 +6,14 @@ import java.util.Arrays;
 /**
  * Created by Yusuf Syaifudin on 6/21/2016.
  */
-public class HMMModel implements Serializable {
+public class HMM implements Serializable {
 
     private String[] label;
     private double[] start;
     private double[][] transition;
     private double[][] emission;
 
-    public HMMModel(int states, String[] labels) {
+    public HMM(int states, String[] labels) {
         this.start = new double[states];
         this.transition = new double[states][states];
         this.emission = new double[states][labels.length];
@@ -68,33 +68,6 @@ public class HMMModel implements Serializable {
 
     public int countLabels() {
         return label.length;
-    }
-
-    public static void main(String[] args) {
-        HMMModel model = new HMMModel(2, new String[]{"A", "B"});
-        model.setStart(0, .85);
-        model.setStart(1, .15);
-
-        model.setTransition(0, 0, .3);
-        model.setTransition(0, 1, .7);
-        model.setTransition(1, 0, .1);
-        model.setTransition(1, 1, .9);
-
-        model.setEmission(0, 0, .4);
-        model.setEmission(0, 1, .6);
-        model.setEmission(1, 0, .5);
-        model.setEmission(1, 1, .5);
-
-        BaumWelchTrainer trainer = new BaumWelchTrainer();
-        try {
-            trainer.trainCycle(model, new String[]{"A", "B", "B", "A"}, 1);
-            trainer.trainCycle(model, new String[]{"B", "A", "B"}, 1);
-            System.out.println(model.getTransition(0, 1));
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("error");
-            System.out.println(e.getMessage());
-        }
     }
 
 }
