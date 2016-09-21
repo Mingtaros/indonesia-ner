@@ -42,11 +42,11 @@ public class BaumWelchTrainer {
             hmm.setStart(i, calcGamma(oldHMM, i, 0, sequence, forward, backward));
         }
 
-        // Reevaluate the transistion probabilities
+        // Reevaluate the transition probabilities
         for (int i = 0; i < states; i++) {
             for (int j = 0; j < states; j++) {
-                int numerator = 0;
-                int denominator = 0;
+                double numerator = 0;
+                double denominator = 0;
 
                 for (int t = 0; t <= sequenceLength - 1; t++) {
                     numerator += calcP(oldHMM, t, i, j, sequence, forward, backward);
@@ -175,7 +175,7 @@ public class BaumWelchTrainer {
      * @param backward
      * @return
      */
-    public double calcGamma(HMM hmm, int t, int i, int[] sequence, double[][] forward, double[][] backward) {
+    public double calcGamma(HMM hmm, int i, int t, int[] sequence, double[][] forward, double[][] backward) {
         int states = hmm.count();
         double numerator = forward[i][t] *  backward[i][t];
         double denominator = 0;

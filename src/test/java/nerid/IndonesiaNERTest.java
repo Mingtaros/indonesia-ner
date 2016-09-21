@@ -32,7 +32,6 @@ public class IndonesiaNERTest {
 	public void testModel() {
 		try {
 			String test = iner.testEmbeddedModel(new File("./resources/ner/data_test.txt"));
-			System.out.println(test);
 			assertEquals(test, "{\"dataCounter\":{\"OTHER\":9526,\"LOCATION\":213,\"ORGANIZATION\":323,\"PERSON\":679,\"QUANTITY\":39,\"TIME\":287},\"total\":11067,\"correct\":1277,\"missing\":264,\"wrong\":853,\"truePositive\":1277,\"trueNegative\":8673,\"falsePositive\":853,\"falseNegative\":264,\"accuracy\":0.8990693051414114,\"recall\":0.8286826735885788,\"precision\":0.5995305164319249,\"totalKalimat\":512}");
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -47,16 +46,14 @@ public class IndonesiaNERTest {
 		ArrayList<Words> kalimat = predicted.get(0).getWords();
 		
 		for(Words kal : kalimat) {
-			if(kal.getToken().equals("Jokowi")) {
+			if (kal.getToken().equals("Jokowi")) {
 				assertEquals(kal.getXmlTag(), "PERSON");
-			} else if(kal.getToken().equals("Singapura")) {
+			} else if (kal.getToken().equals("Singapura")) {
 				assertEquals(kal.getXmlTag(), "LOCATION");
 			} else {
 				assertEquals(kal.getXmlTag(), "OTHER");
 			}
 		}
-		
-		System.out.println(kalimat);
 	}
 
 }
