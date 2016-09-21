@@ -52,7 +52,6 @@ public class NERModel {
 
 	/**
 	 * @return the startProbability
-	 * @deprecated
 	 */
 	public HashMap<String, Double> getStartProbability() {
 		return startProbability;
@@ -60,7 +59,6 @@ public class NERModel {
 
 	/**
 	 * @return the transitionProbability
-	 * @deprecated
 	 */
 	public HashMap<String, HashMap<String, Double>> getTransitionProbability() {
 		return transitionProbability;
@@ -68,7 +66,6 @@ public class NERModel {
 
 	/**
 	 * @return the previousLexicalClass
-	 * @deprecated
 	 */
 	public HashMap<String, HashMap<String, Double>> getPreviousLexicalClass() {
 		return previousLexicalClass;
@@ -76,7 +73,6 @@ public class NERModel {
 
 	/**
 	 * @return the currentLexicalClass
-	 * @deprecated
 	 */
 	public HashMap<String, HashMap<String, Double>> getCurrentLexicalClass() {
 		return currentLexicalClass;
@@ -84,7 +80,6 @@ public class NERModel {
 
 	/**
 	 * @return the nextLexicalClass
-	 * @deprecated
 	 */
 	public HashMap<String, HashMap<String, Double>> getNextLexicalClass() {
 		return nextLexicalClass;
