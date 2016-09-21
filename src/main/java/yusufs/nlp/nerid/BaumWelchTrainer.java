@@ -4,6 +4,13 @@ import org.apache.commons.lang3.SerializationUtils;
 
 /**
  * Created by Yusuf Syaifudin on 6/20/2016.
+ * based on https://github.com/kore/XML-Schema-learner/blob/1298037c03eaf092017b6fb0f40f6bd545069c92/src/learn/baum_welch.php
+ * implementation
+ *
+ * note that in above link in line 106, 107 numerator and denominator not initiated again, so it will sum up last value, I think its a logic error?
+ * also in line 212 numerator not initiated before
+ * in line 167 they initianed forward variable but never used and return backward variable instead
+ * and in line 240 the sequence in parameter is never used, so I think it worth to be removed
  */
 public class BaumWelchTrainer {
 
@@ -39,7 +46,7 @@ public class BaumWelchTrainer {
 
         // Reevaluate the start probabilities
         for (int i = 0; i < states; i++) {
-            hmm.setStart(i, calcGamma(oldHMM, i, 0, sequence, forward, backward));
+            hmm.setStart(i, calcGamma(oldHMM, i, 0, forward, backward));
         }
 
         // Reevaluate the transition probabilities
@@ -50,7 +57,7 @@ public class BaumWelchTrainer {
 
                 for (int t = 0; t <= sequenceLength - 1; t++) {
                     numerator += calcP(oldHMM, t, i, j, sequence, forward, backward);
-                    denominator += calcGamma(oldHMM, i, t, sequence, forward, backward);
+                    denominator += calcGamma(oldHMM, i, t, forward, backward);
                 }
 
                 hmm.setTransition(i, j, divide(numerator, denominator));
@@ -63,7 +70,7 @@ public class BaumWelchTrainer {
                 double numerator = 0;
                 double denominator = 0;
                 for (int t = 0; t <= sequenceLength - 1; t++) {
-                    double gamma = calcGamma(oldHMM, i, t, sequence, forward, backward);
+                    double gamma = calcGamma(oldHMM, i, t, forward, backward);
                     numerator += gamma * ( (k == sequence[t]) ? 1 : 0 );
                     denominator += gamma;
                 }
@@ -170,12 +177,11 @@ public class BaumWelchTrainer {
      * @param hmm
      * @param t
      * @param i
-     * @param sequence
      * @param forward
      * @param backward
      * @return
      */
-    public double calcGamma(HMM hmm, int i, int t, int[] sequence, double[][] forward, double[][] backward) {
+    public double calcGamma(HMM hmm, int i, int t, double[][] forward, double[][] backward) {
         int states = hmm.count();
         double numerator = forward[i][t] *  backward[i][t];
         double denominator = 0;
