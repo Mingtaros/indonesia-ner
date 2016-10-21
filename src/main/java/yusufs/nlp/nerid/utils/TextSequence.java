@@ -33,10 +33,11 @@ public class TextSequence {
 	 * 
 	 * @param sentence
 	 * @param withPunctuation apakah tanda baca diikutkan atau tidak. true = diikutkan, false = tidak. (Lihat Tokenizer.class)
+	 * @param extendedTag apakah mau menggunakan Config.EXTENDED_POSTAG (true) atau Config.POSTAG (false)
 	 * @return Sentence kalimat yang memiliki kalimat asli, kalimat yang sudah di tokenisasi dan kumpulan kata yang membentuk kalimat.
 	 * @throws Exception
 	 */
-	public Sentence wordSeqWithTag(String sentence, Boolean withPunctuation) {
+	public Sentence wordSeqWithTag(String sentence, Boolean withPunctuation, Boolean extendedTag) {
 		// Cari sequence dari tag xml dulu
 		XMLTokenSequence xts = xs.xmlTokenSequence(sentence, "OTHER", withPunctuation);
 		
@@ -47,7 +48,7 @@ public class TextSequence {
 		ArrayList<LinkedHashMap<String, String>> xmlTag = xts.getXmlSequence();
 		
 		// Sekarang lakukan POS tagging
-		ArrayList<LinkedHashMap<String, String>> postagger = pt.recognize(tokenized, withPunctuation);
+		ArrayList<LinkedHashMap<String, String>> postagger = pt.recognize(tokenized, withPunctuation, extendedTag);
 		
 		ArrayList<Words> merged = new ArrayList<>();
 		// Sekarang kita mendapatkan sequence dari xml tag dan pos tag, gabungkan keduanya.
@@ -82,6 +83,18 @@ public class TextSequence {
 		}
 		
 		return new Sentence();
+	}
+
+	/**
+	 * Melakukan proses pemecahan tag XML dan mencari POS tag sekaligus.
+	 *
+	 * @param sentence
+	 * @param withPunctuation apakah tanda baca diikutkan atau tidak. true = diikutkan, false = tidak. (Lihat Tokenizer.class)
+	 * @return Sentence kalimat yang memiliki kalimat asli, kalimat yang sudah di tokenisasi dan kumpulan kata yang membentuk kalimat.
+	 * @throws Exception
+	 */
+	public Sentence wordSeqWithTag(String sentence, Boolean withPunctuation) {
+		return wordSeqWithTag(sentence, withPunctuation, true);
 	}
 
 	

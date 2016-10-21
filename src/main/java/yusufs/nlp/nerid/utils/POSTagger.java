@@ -55,9 +55,10 @@ public class POSTagger {
      * Menghasilkan array hashmap, dengan kunci token dan postag.
      * @param sentence
      * @param withPunct
-     * @return
+     * @param extendedTag
+     * @return ArrayList<LinkedHashMap<String, String>>
      */
-    public ArrayList<LinkedHashMap<String, String>> recognize(String sentence, Boolean withPunct) {
+    public ArrayList<LinkedHashMap<String, String>> recognize(String sentence, Boolean withPunct, Boolean extendedTag) {
     	Tokenizer tk = new Tokenizer();
     	String tokenize = tk.tokenizeToString(sentence, withPunct);
         ArrayList<String> taggedSentence = mainTagger.taggingStr(tokenize);
@@ -85,7 +86,7 @@ public class POSTagger {
         	} else {
         		getPOSTag = "SYM";
         	}
-        	
+
         	getPOSTag = extendTag(tokenize.trim(), getPOSTag);
         	
         	defaultPostag.put("token", tokenize.trim());
@@ -104,8 +105,10 @@ public class POSTagger {
         	
         	// Lalu simpan ke variable tmp bertipe LinkedHashMap untuk memastikan sesuai urutan.
         	LinkedHashMap<String, String> tmp = new LinkedHashMap<>();
-        	
-        	postag = extendTag(word, postag);
+
+            if(extendedTag == true) {
+                postag = extendTag(word, postag);
+            }
         	
             tmp.put("token", word);
             tmp.put("postag", postag);
@@ -117,8 +120,18 @@ public class POSTagger {
         logger.info(output);
         return output;
     }
-    
-    
+
+    /**
+     * Menghasilkan array hashmap, dengan kunci token dan postag.
+     * @param sentence
+     * @param withPunct
+     * @return
+     */
+    public ArrayList<LinkedHashMap<String, String>> recognize(String sentence, Boolean withPunct) {
+        return recognize(sentence, withPunct, true);
+    }
+
+
     /**
      * Cek apakah string berisi hanya huruf.
      * @param word
